@@ -1,0 +1,34 @@
+参照网址
+https://machinelearningmastery.com/text-generation-lstm-recurrent-neural-networks-python-keras/
+
+说明：
+代码：
+【运行】
+data_and_model.py   数据处理和模型训练
+generate_text.py    文本生成
+
+【1】single_LSTM
+数据处理:   对x char2int 后，简单标化(不合理)
+模型：     单层lstm
+数据：     wonderland.txt/ci.txt(宋词)/LuXun.txt
+结果：     生成效果不好
+
+【2】bi_lstm
+数据处理:   x  char2int后 进行one_hot encoding
+模型：      onehot + bi_LSTM
+数据：      LuXun.txt 鲁迅文集全集
+结果：      比single_LSTM效果好，但还是不是人话
+
+【3】继续优化
+3.0 尝试其他模型：Embedding + 双向GRU (birdectional GRU)
+    https://github.com/massquantity/text-generation-using-keras
+3.1 数据:去除标点符号;选用更现代的自由文本(如旅游评论等)
+3.2 使用bert_embedding
+3.3 Train the model on padded sentences rather than random sequences of characters.
+3.4 增加训练轮数到100或者更多
+3.5 Add dropout to the visible input layer and consider tuning the dropout percentage.
+3.6 Tune the batch size
+3.7 Add more memory units to the layers and/or more layers.
+3.8 Change the LSTM layers to be “stateful” to maintain state across batches.
+
+time：20200917 邹佳丽 Lantone
